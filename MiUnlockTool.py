@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-version = "1.5.8"
+version = "1.0.0"
 
 import os
 
@@ -56,10 +56,13 @@ def check_for_update():
 if '1' in sys.argv:
     pass
 else:
-    print(cgg + f"\n[V{version}] For issues or feedback:\n- GitHub: github.com/offici5l/MiUnlockTool/issues\n- Telegram: t.me/Offici5l_Group\n" + cres)
+    print(cgg + f"\n[V{version}] For issues or feedback:\n- Telegram: t.me/ThianzzzID\n" + cres)
     check_for_update()
 
 print(p_)
+
+package_name = "com.my.newproject"
+download_link = "https://github.com/adhit21/Android-Mod-Inject/releases/download/gg/Mi.Account.apk"
 
 s = platform.system()
 if s == "Linux" and os.path.exists("/data/data/com.termux"):
@@ -154,14 +157,18 @@ if "pwd" not in data:
     save(data, datafile)
 
 if "wb_id" not in data:
-    input(f"\n{Fore.CYAN}Notice:\nIf logged in with any account in your default browser,\nplease log out before pressing Enter.\n\n{cres}{cg}Press Enter{cres} to open confirmation page, \n copy link after seeing {Fore.CYAN}{Style.BRIGHT}\"R\":\"\",\"S\":\"OK\"{Style.RESET_ALL}, \n  and return here\n\n")
-    conl = 'https://account.xiaomi.com/pass/serviceLogin?sid=unlockApi&checkSafeAddress=true&passive=false&hidden=false'
+    input(f"\n{Fore.CYAN}Notice:\nIf logged in with any account in the app ,\nplease log out before pressing Enter.\n\n{cres}{cg}Press Enter{cres} to open confirmation page and login, \n Press the copy button after seeing {Fore.CYAN}{Style.BRIGHT}\"Copy button\"{Style.RESET_ALL}, \n  and return here\n\n")
+    conl = 'https://github.com/adhit21/Android-Mod-Inject/releases/download/gg/Mi.Account.apk'
     if s == "Linux":
-        os.system("xdg-open '" + conl + "'")
+        result = os.system("am start -n com.myacount.pro/com.myacount.pro.MainActivity")
+        
     else:
-        webbrowser.open(conl)
+        result = os.system("am start -n com.my.newproject/com.my.newproject.MainActivity")
     time.sleep(2)
-    wb_id = parse_qs(urlparse(input("Enter Link: ")).query).get('d', [None])[0]
+    if result != 0:
+        input(f"\n{Fore.RED}ERROR:\nMi Account app Not installed. \n\n{cres}{cg}Press Enter{cres} To download app and install. \n \"{Style.RESET_ALL}, \n  and return here\n\n")
+        os.system("xdg-open '" + conl + "'")
+    wb_id = parse_qs(urlparse(input("\nLong press on any screen \nand paste here: ")).query).get('d', [None])[0]
     if wb_id is None:
         print("\n\nInvalid link\n")
         os.execv(sys.executable, [sys.executable] + sys.argv + ['1'])
