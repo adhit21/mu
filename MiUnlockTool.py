@@ -39,7 +39,7 @@ headers = {"User-Agent": "XiaomiPCSuite"}
 
 def check_for_update():
     try:
-        response = requests.get("https://raw.githubusercontent.com/offici5l/MiUnlockTool/main/MiUnlockTool.py", timeout=3)
+        response = requests.get("https://raw.githubusercontent.com/adhit21/mu/main/MiUnlockTool.py", timeout=3)
         response.raise_for_status()
         match = re.search(r'version\s*=\s*[\'"]([^\'"]+)[\'"]', response.text)
         if match:
